@@ -1,38 +1,60 @@
 import React from 'react'
-import Col from './Col'
-import Row from './Row'
+// import Col from './Col'
+// import Row from './Row'
 
-const Table = () => {
+const Table = (props) => {
     return (
-        <div className ="container">
+        <div className="container">
             <table className="table table-hover ">
-                
+
                 <thead className="thead-dark">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">picture</th>
+                        <th scope="col" onClick={()=>{
+                            props.handleOnSubmit("first")
+                        }}>First</th>
+                        <th scope="col" onClick={()=>{
+                            props.handleOnSubmit("last")
+                        }}>Last</th>
+                        <th scope="col">email</th>
+                        <th scope="col">phone</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
+                    {
+
+                        props.employeeList.map((person, id) => {
+                            return (
+                                <tr key={id}>
+                                    <td>
+                                        {id}
+                                    </td>
+                                    <td>
+                                        <img src={person.picture.thumbnail} />
+                                    </td>
+                                    <td>
+                                        {person.name.first}
+                                    </td>
+
+                                    <td>
+                                        {person.name.last}
+                                    </td>
+
+                                    <td>
+                                        {person.email}
+                                    </td>
+
+                                    <td>
+                                        {person.phone}
+                                    </td>
+                                </tr>
+                            )
+
+                        })
+
+
+                    }
                 </tbody>
             </table>
         </div>
