@@ -18,6 +18,9 @@ const Table = (props) => {
                             props.handleOnSubmit("last")
                         }}>Last</th>
                         <th scope="col">email</th>
+                        {/*   <th scope ="col" onClick={()=>{
+                            props.handleOnSubmit("email")
+                        }}>Email</th> */}
                         <th scope="col">phone</th>
                     </tr>
                 </thead>
